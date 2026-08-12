@@ -30,9 +30,6 @@ client.once('ready', async () => {
     const allServer = servers.prepare(`
         SELECT * FROM servers    
     `).all(); 
-
-    console.table(allServer);
-    console.table(allUser);
 }); 
 
 const activities = new Map();
