@@ -12,7 +12,8 @@ const client = new Client({
     ]
 });
 
-client.once('ready', async () => {
+client.once('clientReady', async () => {
+    console.log('Bot ready!');
     for(const guild of client.guilds.cache.values())
     {
         addServer(guild.id, guild.name);
