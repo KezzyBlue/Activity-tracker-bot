@@ -14,6 +14,21 @@ app.get('/api/logs/:id', (req, res) => {
     res.json(userLog);
 });
 
+app.get('/api/stats/:id', (req, res) => {
+    const id = req.params.id;
+    const total = logs.prepare(`
+        SELECT
+            event,
+            SUM(
+                strftime('%s', end) - strftime('%s', start)
+            ) AS totalTime
+        FROM logs
+        WHERE userId = ?
+        GROUP BY event
+    `).all(id);
+    res.json(total);
+});
+
 const PORT = process.env.PORT || 25742;
 
 app.listen(PORT, '0.0.0.0', () => {
