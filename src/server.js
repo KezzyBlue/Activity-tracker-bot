@@ -14,7 +14,7 @@ app.get('/api/logs/:id', (req, res) => {
     res.json(userLog);
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 25742;
 
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`API listening on port ${PORT}`);
